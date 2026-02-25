@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contextual Failures • CoRL 2025</title>
+  <meta name="description" content="Project page for SEED-SET (ICLR 2026)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> html { scroll-behavior: smooth } body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif } code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace } </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900">
+  <!-- Sticky nav -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#top" class="font-semibold">Project • CoRL 2025</a>
+      <nav class="hidden md:flex gap-5 text-sm">
+        <a href="#abstract" class="hover:underline">Abstract</a>
+        <!--a href="#video" class="hover:underline">Video</a-->
+        <a href="#results" class="hover:underline">Results</a>
+        <a href="#code" class="hover:underline">Code</a>
+        <a href="#bibtex" class="hover:underline">BibTeX</a>
+        <a href="#team" class="hover:underline">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="py-12 md:py-20">
+        <div class="text-center">
+          <p class="text-sm uppercase tracking-widest text-neutral-500">ICLR 2026</p>
+          <h1 class="mt-3 text-2xl sm:text-4xl md:text-6xl font-extrabold">SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing</h1>
+          <p class="mt-4 text-lg text-neutral-600 max-w-3xl mx-auto">LLM assisted ethical benchmarking of autonomous systems using limited budget testing</p>
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a class="px-4 py-2 rounded-xl bg-black text-white" href="https://openreview.net/pdf?id=lfsjVdi72l">PDF</a>
+            <a class="px-4 py-2 rounded-xl bg-neutral-200" href="#code">Code</a>
+          </div>
+          <div class="mt-6 text-sm text-neutral-500">Anjali Parashar<sup>1*</sup>, Yinkge Li<sup>1</sup>, Eric Yang Yu <sup>1</sup>, Fei Chen<sup>1</sup>, James Neidhoefer<sup>1</sup>, Devesh Upadhyay<sup>2</sup>, Chuchu Fan<sup>1</sup></div>
+          <div class="mt-2 text-xs text-neutral-400">
+            <sup>1</sup> LIDS, MIT <br>
+            <sup>2</sup> SAAB <br>
+            * Corresponding author
+          </div>
+          <img class="mt-10 rounded-2xl shadow" src="static/images/seed-set-overview.png" alt="Teaser figure" />
+          <p class="mt-2 text-xs text-neutral-500">Pipeline overview using Distributed Energy Resource distribution in power grid example</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <p class="mt-2 text-neutral-700">Failure examples for Diffusion Policy trained in Sim for Push-T task on UR3E.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <figure class="rounded-2xl overflow-hidden bg-neutral-100 shadow">
+        <video
+          class="w-full"
+          style="aspect-ratio: 12/14;"
+          controls
+          playsinline
+          preload="metadata"
+          poster="static/images/Mode_2.png">
+          <source src="static/videos/CORL_Mode2_PushT.mp4"  type="video/mp4"  />
+          Your browser doesn’t support HTML5 video.
+        </video>
+        <figcaption class="p-3 text-sm text-neutral-600">Discovered failure due to training data (Diffusion Policy: Push-T)</figcaption>
+      </figure>
+  
+
+      <figure class="rounded-2xl overflow-hidden bg-neutral-100 shadow">
+        <video
+          class="w-full"
+          style="aspect-ratio: 12/14;"
+          controls
+          playsinline
+          preload="metadata"
+          poster="static/images/Mode_3.png">
+          <source src="static/videos/CORL_Mode3_PushT.mp4"  type="video/mp4"  />
+          Your browser doesn’t support HTML5 video.
+        </video>
+        <figcaption class="p-3 text-sm text-neutral-600">Discovered failure due to joint limits (Diffusion Policy: Push-T)</figcaption>
+      </figure>
+  
+
+      <figure class="rounded-2xl overflow-hidden bg-neutral-100 shadow">
+        <video
+          class="w-full"
+          style="aspect-ratio:12/14;"
+          controls
+          playsinline
+          preload="metadata"
+          poster="static/images/Repair.png">
+          <source src="static/videos/Fail_and_Repair_PushT.mp4"  type="video/mp4"  />
+          Your browser doesn’t support HTML5 video.
+        </video>
+        <figcaption class="p-3 text-sm text-neutral-600">Failure used for repair by supplying better demonstrations</figcaption>
+      </figure>
+    </div>
+  </div-->
+  
+  <!-- Results -->
+  <!--section id="results" class="border-t border-neutral-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+   
+      <p class="mt-2 text-neutral-700">Failure examples for YOLO self-driving object detection in CARLA.</p>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <figure class="bg-neutral-100 rounded-2xl p-3 shadow">
+          <img class="rounded-xl" src="static/images/light.png" alt="Result 1" />
+          <figcaption class="mt-2 text-sm text-neutral-600">Failure due to bad lighting</figcaption>
+        </figure>
+        <figure class="bg-neutral-100 rounded-2xl p-3 shadow">
+          <img class="rounded-xl" src="static/images/distance.png" alt="Result 2" />
+          <figcaption class="mt-2 text-sm text-neutral-600">Failure due to large distance</figcaption>
+        </figure>
+        <figure class="bg-neutral-100 rounded-2xl p-3 shadow">
+          <img class="rounded-xl" src="static/images/distance_and_light.png" alt="Result 3" />
+          <figcaption class="mt-2 text-sm text-neutral-600">Failure due to large distance and bad lighting</figcaption>
+        </figure>
+      </div>
+
+      
+    </div>
+  </section-->
+  <!-- Put video.mp4 (H.264), video.webm (VP9/AV1), and captions.vtt in the same folder as this HTML -->
+  <!--div style="max-width: 800px; margin: 1rem auto;">
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      style="width: 100%; height: auto; border-radius: 12px; display: block;"
+      poster="thumbnail.jpg"
+    >
+      
+      <source src="video.webm" type="video/webm" />
+      <source src="video.mp4"  type="video/mp4" />
+      
+      <track
+        src="captions.vtt"
+        kind="subtitles"
+        srclang="en"
+        label="English"
+        default
+      />
+    
+      Your browser doesn’t support HTML5 video.
+    </video>
+  </div-->
+
+  <!-- Video / Demo -->
+  <!--section id="video" class="border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+      <h2 class="text-2xl md:text-3xl font-bold">Overview Video</h2>
+      <p class="mt-2 text-neutral-700">Embed your 3–6 minute project video or live demo below.</p>
+      <div class="mt-6 aspect-video rounded-2xl overflow-hidden shadow bg-black"-->
+        <!-- Replace YOUTUBE_ID -->
+        <!--iframe class="w-full h-full" src="https://www.youtube.com/embed/YOUTUBE_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section-->
+  <!-- Abstract -->
+  <section id="abstract" class="border-t border-neutral-200 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <h2 class="text-2xl md:text-3xl font-bold">Abstract</h2>
+      <p class="mt-4 text-neutral-700">As autonomous systems such as drones, become increasingly deployed in high-stakes, human-centric domains, it is critical to evaluate the ethical alignment since failure to do so imposes imminent danger to human lives, and long term bias in decision-making. Automated ethical benchmarking of these systems is understudied due to the lack of ubiquitous, well-defined metrics for evaluation, and stakeholder-specific subjectivity, which cannot be modeled analytically.  To address these challenges, we propose SEED-SET, a Bayesian experimental design framework that incorporates domain-specific objective evaluations, and subjective value judgments from stakeholders. SEED-SET models both evaluation types separately with hierarchical Gaussian Processes, and uses a novel acquisition strategy to propose interesting test candidates based on learnt qualitative preferences and objectives that align with the stakeholder preferences.
+        We validate our approach for ethical benchmarking of autonomous agents on two applications and find our method to perform the best. Our method provides an interpretable and efficient trade-off between exploration and exploitation, by generating up to $2\times$ optimal test candidates compared to baselines, with $1.25\times$ improvement in coverage of high dimensional search spaces. </p>
+      <!--ul class="mt-4 list-disc pl-6 text-neutral-700">
+        <li>Key takeaway 1.</li>
+        <li>Key takeaway 2.</li>
+        <li>Key takeaway 3.</li>
+      </ul-->
+    </div>
+  </section>
+
+  
+
+  <!-- Code & Data -->
+  <section id="code" class="border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <h2 class="text-2xl md:text-3xl font-bold">Code</h2>
+      <p class="mt-2 text-neutral-700">To be released soon!</p>
+      <div class="mt-4 grid md:grid-cols-2 gap-4">
+        <!--div class="bg-neutral-100 rounded-2xl p-4">
+          <h3 class="font-semibold">Quickstart</h3>
+          <pre class="mt-2 text-sm overflow-x-auto"><code>git clone https://github.com/MIT-REALM/contextual_failure.git
+cd contextual_failure
+        </div-->
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex" class="border-t border-neutral-200 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <h2 class="text-2xl md:text-3xl font-bold">BibTeX</h2>
+      <pre class="mt-4 bg-neutral-100 p-4 rounded-2xl overflow-x-auto text-sm"><code>@inproceedings{parasharseed,
+        title={SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing},
+        author={Parashar, Anjali and Li, Yingke and Yu, Eric Yang and Chen, Fei and Neidhoefer, James and Upadhyay, Devesh and Fan, Chuchu},
+        booktitle={The Fourteenth International Conference on Learning Representations}
+      }
+</code></pre>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="border-t border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <h2 class="text-2xl md:text-3xl font-bold">Authors & Affiliations</h2>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-4 shadow">
+          <div class="font-semibold">Anjali Parashar</div>
+          <div class="text-sm text-neutral-600">MIT REALM Lab</div>
+          <div class="mt-2 text-sm"><a class="underline" href="https://aeroastro.mit.edu/realm/team/anjali-parashar/">Homepage</a> • <a class="underline" href="https://scholar.google.com/citations?user=XMr6ploAAAAJ&hl=en&oi=ao" href="#">Scholar</a> • <a class="underline" href="anjalip@mit.edu">Email</a></div>
+        </div>
+        <!-- Duplicate blocks for co-authors -->
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer class="border-t border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-sm text-neutral-600 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+      <div>© ICLR 2026 Parashar et al. Please cite if you use this work.</div>
+      <div class="flex gap-4">
+        <a class="underline" href="https://openreview.net/pdf/0c4bbc4ecee323522e632879cc6fa741268a8c13.pdf">Paper</a>
+        <a class="underline" href="https://github.com/MIT-REALM/contextual_failure">Code</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
