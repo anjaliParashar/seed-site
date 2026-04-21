@@ -3,232 +3,410 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SEED SET • ICLR 2026</title>
-  <meta name="description" content="Project page for SEED-SET (ICLR 2026)." />
+  <title>SEED-SET | ICLR 2026</title>
+  <meta name="description" content="Project page for SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style> html { scroll-behavior: smooth } body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif } code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace } </style>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .glass { backdrop-filter: blur(10px); }
+    .chip { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium; }
+    .metric-card, .info-card, .pipeline-node, .stake-card { transition: all 180ms ease; }
+    .pipeline-node.active { border-color: rgb(17 24 39); background: rgb(245 245 245); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+    .stake-card.active { border-color: rgb(17 24 39); background: rgb(245 245 245); }
+  </style>
 </head>
 <body class="bg-neutral-50 text-neutral-900">
-  <!-- Sticky nav -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-neutral-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-      <a href="#top" class="font-semibold">SEED-SET • ICLR 2026</a>
-      <nav class="hidden md:flex gap-5 text-sm">
-        <a href="#abstract" class="hover:underline">Abstract</a>
-        <!--a href="#video" class="hover:underline">Video</a-->
+  <header class="sticky top-0 z-40 glass bg-white/80 border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <a href="#top" class="font-semibold tracking-tight">SEED-SET • ICLR 2026</a>
+      <nav class="hidden md:flex gap-5 text-sm text-neutral-700">
+        <a href="#summary" class="hover:underline">Summary</a>
+        <a href="#problem" class="hover:underline">Why Hard</a>
+        <a href="#pipeline" class="hover:underline">Pipeline</a>
         <a href="#results" class="hover:underline">Results</a>
-        <a href="#code" class="hover:underline">Code</a>
+        <a href="#resources" class="hover:underline">Resources</a>
         <a href="#bibtex" class="hover:underline">BibTeX</a>
-        <a href="#team" class="hover:underline">Team</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="top" class="relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="py-12 md:py-20">
-        <div class="text-center">
-          <p class="text-sm uppercase tracking-widest text-neutral-500">ICLR 2026</p>
-          <h1 class="mt-3 text-2xl sm:text-4xl md:text-5xl font-extrabold">SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing</h1>
-          <p class="mt-4 text-lg text-neutral-600 max-w-3xl mx-auto">LLM assisted ethical benchmarking of autonomous systems using limited budget testing</p>
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a class="px-4 py-2 rounded-xl bg-black text-white" href="https://openreview.net/pdf?id=lfsjVdi72l">PDF</a>
-            <a class="px-4 py-2 rounded-xl bg-neutral-200" href="#code">Code</a>
-          </div>
-          <div class="mt-4 text-lg text-neutral-600 max-w-3xl mx-auto">Anjali Parashar<sup>1*</sup>, Yinkge Li<sup>1</sup>, Eric Yang Yu <sup>1</sup>, Fei Chen<sup>1</sup>, James Neidhoefer<sup>1</sup>, Devesh Upadhyay<sup>2</sup>, Chuchu Fan<sup>1</sup></div>
-          <div class="mt-6 text-sm font-extrabold">
-            <sup>1</sup> LIDS, MIT <br>
-            <sup>2</sup> SAAB <br>
-          </div>
-          <img class="mt-10 rounded-2xl shadow" src="static/images/seed-set-overview.png" alt="Teaser figure" />
-          <p class="mt-2 text-xs text-neutral-500">Pipeline overview using Distributed Energy Resource distribution in power grid example</p>
+  <section id="top" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-neutral-50 to-neutral-100"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+      <div class="text-center max-w-5xl mx-auto">
+        <p class="text-lg md:text-2xl uppercase tracking-[0.22em] text-neutral-500 font-semibold">ICLR 2026 | International Conference on Learning Representations </p>
+        <h1 class="mt-4 text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing</h1>
+        <p class="mt-5 text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">A Bayesian experimental design framework for discovering ethically informative test scenarios when objectives conflict, preferences are subjective, and evaluation budgets are small.</p>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm">
+          <span class="rounded-full bg-indigo-50 text-indigo-700 px-3 py-1 font-medium">Bayesian experimental design</span>
+          <span class="rounded-full bg-emerald-50 text-emerald-700 px-3 py-1 font-medium">Preference learning</span>
+          <span class="rounded-full bg-amber-50 text-amber-700 px-3 py-1 font-medium">Multi-objective testing</span>
+          <span class="rounded-full bg-neutral-200 text-neutral-700 px-3 py-1 font-medium">LLM-assisted evaluation</span>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a class="px-4 py-2 rounded-xl bg-black text-white font-medium shadow-sm hover:opacity-90" href="https://arxiv.org/abs/2603.01630">Paper PDF</a>
+          <a class="px-4 py-2 rounded-xl bg-white border border-neutral-300 font-medium hover:bg-neutral-100" href="#summary">5-min summary</a>
+          <a class="px-4 py-2 rounded-xl bg-white border border-neutral-300 font-medium hover:bg-neutral-100" href="#resources">Resources</a>
+        </div>
+
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm text-neutral-600">
+          <a class="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-3 py-1.5 font-medium text-neutral-800 shadow-sm hover:bg-neutral-100" href="demo_lite.html" aria-label="Blog Post">
+            <span class="text-base" aria-hidden="true">📝</span>
+            <span>Read the blog post</span>
+          </a>
+          <a class="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-3 py-1.5 font-medium text-neutral-800 shadow-sm hover:bg-neutral-100" href="https://colab.research.google.com/drive/1eNi_Ogxze1mkHXmp94bY0QWhxA3H7bT2?usp=sharing" aria-label="Colab Demo">
+            <span class="text-base" aria-hidden="true">📓</span>
+            <span>Open demo in Colab</span>
+          </a>
+          <a class="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-3 py-1.5 font-medium text-neutral-800 shadow-sm hover:bg-neutral-100" href="https://news.mit.edu/2026/evaluating-autonomous-systems-ethics-0402" aria-label="MIT News feature">
+            <span class="text-base" aria-hidden="true">📰</span>
+            <span>Read the MIT News article</span>
+          </a>
+          <a class="underline underline-offset-4" href="https://github.com/MIT-REALM/contextual_failure">Code</a>
+        </div>
+
+        <div class="mt-8 text-sm text-neutral-500">Anjali Parashar<sup>1*</sup>, Yingke Li<sup>1</sup>, Eric Yang Yu<sup>1</sup>, Fei Chen<sup>1</sup>, James Neidhoefer<sup>1</sup>, Devesh Upadhyay<sup>2</sup>, Chuchu Fan<sup>1</sup></div>
+        <div class="mt-2 text-xs text-neutral-400">
+          <sup>1</sup> LIDS, MIT &nbsp;•&nbsp; <sup>2</sup> Saab &nbsp;•&nbsp; * Corresponding author
+        </div>
+
+        <img class="mt-10 rounded-3xl shadow-xl border border-neutral-200" src="static/images/seed-set-overview.png" alt="SEED-SET overview figure" />
+        <p class="mt-3 text-sm text-neutral-500">SEED-SET maintains separate models for objective outcomes and stakeholder preferences, then selects the next tests that are most informative about both.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="summary" class="border-t border-neutral-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">5-minute summary</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">What SEED-SET does</h2>
+        <p class="mt-4 text-neutral-700 text-lg">Autonomous systems are increasingly deployed in settings where failures are not just technical, but ethical: they can unevenly distribute risk, cost, coverage, or resilience across people and communities. SEED-SET turns ethical benchmarking into an active test design problem: rather than exhaustively searching a huge scenario space, it learns which tests are most informative about both system behaviour and stakeholder values.</p>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <div class="info-card rounded-2xl bg-neutral-50 border border-neutral-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-neutral-500">Problem</div>
+          <h3 class="mt-2 text-xl font-semibold">No single ethical metric</h3>
+          <p class="mt-2 text-neutral-700">Real systems trade off multiple objectives such as fairness, cost, priority, and resilience. Improving one can hurt another.</p>
+        </div>
+        <div class="info-card rounded-2xl bg-neutral-50 border border-neutral-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-neutral-500">Challenge</div>
+          <h3 class="mt-2 text-xl font-semibold">Stakeholder preferences differ</h3>
+          <p class="mt-2 text-neutral-700">A regulator, a grid engineer, and a community advocate can prefer very different outcomes, and those preferences are hard to write down analytically.</p>
+        </div>
+        <div class="info-card rounded-2xl bg-neutral-50 border border-neutral-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-neutral-500">Approach</div>
+          <h3 class="mt-2 text-xl font-semibold">Learn what to test next</h3>
+          <p class="mt-2 text-neutral-700">SEED-SET models objective outcomes and pairwise stakeholder preferences separately, then actively proposes the next most useful tests.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!--div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-    <p class="mt-2 text-neutral-700">Failure examples for Diffusion Policy trained in Sim for Push-T task on UR3E.</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <figure class="rounded-2xl overflow-hidden bg-neutral-100 shadow">
-        <video
-          class="w-full"
-          style="aspect-ratio: 12/14;"
-          controls
-          playsinline
-          preload="metadata"
-          poster="static/images/Mode_2.png">
-          <source src="static/videos/CORL_Mode2_PushT.mp4"  type="video/mp4"  />
-          Your browser doesn’t support HTML5 video.
-        </video>
-        <figcaption class="p-3 text-sm text-neutral-600">Discovered failure due to training data (Diffusion Policy: Push-T)</figcaption>
-      </figure>
-  
-
-      <figure class="rounded-2xl overflow-hidden bg-neutral-100 shadow">
-        <video
-          class="w-full"
-          style="aspect-ratio: 12/14;"
-          controls
-          playsinline
-          preload="metadata"
-          poster="static/images/Mode_3.png">
-          <source src="static/videos/CORL_Mode3_PushT.mp4"  type="video/mp4"  />
-          Your browser doesn’t support HTML5 video.
-        </video>
-        <figcaption class="p-3 text-sm text-neutral-600">Discovered failure due to joint limits (Diffusion Policy: Push-T)</figcaption>
-      </figure>
-  
-
-      <figure class="rounded-2xl overflow-hidden bg-neutral-100 shadow">
-        <video
-          class="w-full"
-          style="aspect-ratio:12/14;"
-          controls
-          playsinline
-          preload="metadata"
-          poster="static/images/Repair.png">
-          <source src="static/videos/Fail_and_Repair_PushT.mp4"  type="video/mp4"  />
-          Your browser doesn’t support HTML5 video.
-        </video>
-        <figcaption class="p-3 text-sm text-neutral-600">Failure used for repair by supplying better demonstrations</figcaption>
-      </figure>
-    </div>
-  </div-->
-  
-  <!-- Results -->
-  <!--section id="results" class="border-t border-neutral-200 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-   
-      <p class="mt-2 text-neutral-700">Failure examples for YOLO self-driving object detection in CARLA.</p>
-      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <figure class="bg-neutral-100 rounded-2xl p-3 shadow">
-          <img class="rounded-xl" src="static/images/light.png" alt="Result 1" />
-          <figcaption class="mt-2 text-sm text-neutral-600">Failure due to bad lighting</figcaption>
-        </figure>
-        <figure class="bg-neutral-100 rounded-2xl p-3 shadow">
-          <img class="rounded-xl" src="static/images/distance.png" alt="Result 2" />
-          <figcaption class="mt-2 text-sm text-neutral-600">Failure due to large distance</figcaption>
-        </figure>
-        <figure class="bg-neutral-100 rounded-2xl p-3 shadow">
-          <img class="rounded-xl" src="static/images/distance_and_light.png" alt="Result 3" />
-          <figcaption class="mt-2 text-sm text-neutral-600">Failure due to large distance and bad lighting</figcaption>
-        </figure>
+  <section id="problem" class="border-t border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">Why this problem is hard</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Ethical benchmarking is difficult for three reasons</h2>
       </div>
 
-      
-    </div>
-  </section-->
-  <!-- Put video.mp4 (H.264), video.webm (VP9/AV1), and captions.vtt in the same folder as this HTML -->
-  <!--div style="max-width: 800px; margin: 1rem auto;">
-    <video
-      controls
-      playsinline
-      preload="metadata"
-      style="width: 100%; height: auto; border-radius: 12px; display: block;"
-      poster="thumbnail.jpg"
-    >
-      
-      <source src="video.webm" type="video/webm" />
-      <source src="video.mp4"  type="video/mp4" />
-      
-      <track
-        src="captions.vtt"
-        kind="subtitles"
-        srclang="en"
-        label="English"
-        default
-      />
-    
-      Your browser doesn’t support HTML5 video.
-    </video>
-  </div-->
+      <div class="mt-8 grid lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <div class="text-3xl">01</div>
+          <h3 class="mt-3 text-xl font-semibold">No universal objective</h3>
+          <p class="mt-3 text-neutral-700">In the power-grid example, we care about voltage fairness, deployment cost, priority coverage, and resilience. These objectives conflict, so there is no single scalar score that captures “ethical” behaviour for all users.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <div class="text-3xl">02</div>
+          <h3 class="mt-3 text-xl font-semibold">Subjective stakeholder values</h3>
+          <p class="mt-3 text-neutral-700">Different stakeholders care about different trade-offs. Those preferences are often qualitative, contextual, and hard to encode by hand, so SEED-SET learns them from pairwise comparisons.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <div class="text-3xl">03</div>
+          <h3 class="mt-3 text-xl font-semibold">Massive scenario spaces</h3>
+          <p class="mt-3 text-neutral-700">Even moderate system models can induce high-dimensional spaces of possible tests. Exhaustive evaluation is infeasible, which makes active test selection essential.</p>
+        </div>
+      </div>
 
-  <!-- Video / Demo -->
-  <!--section id="video" class="border-t border-neutral-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-      <h2 class="text-2xl md:text-3xl font-bold">Overview Video</h2>
-      <p class="mt-2 text-neutral-700">Embed your 3–6 minute project video or live demo below.</p>
-      <div class="mt-6 aspect-video rounded-2xl overflow-hidden shadow bg-black"-->
-        <!-- Replace YOUTUBE_ID -->
-        <!--iframe class="w-full h-full" src="https://www.youtube.com/embed/YOUTUBE_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="mt-8 rounded-2xl bg-black text-white p-6 md:p-7 shadow-lg">
+        <p class="text-sm uppercase tracking-[0.24em] text-neutral-300">Core idea</p>
+        <p class="mt-3 text-lg leading-8 text-neutral-100">Treat ethical testing as a Bayesian experimental design problem: maintain uncertainty over both <span class="font-semibold text-white">what the system does</span> and <span class="font-semibold text-white">what the stakeholder prefers</span>, then pick the next scenario that reveals the most about both.</p>
       </div>
     </div>
-  </section-->
-  <!-- Abstract -->
-  <section id="abstract" class="border-t border-neutral-200 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+  </section>
+
+  <section id="pipeline" class="border-t border-neutral-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">Interactive pipeline</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">A compact view of the full loop</h2>
+        <p class="mt-4 text-neutral-700">This front page keeps the most useful demo interaction: click a stage to see what it contributes. The full blogpost can go deeper, but this gives visitors a quick mental model of the method.</p>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-6 gap-3">
+        <button class="pipeline-node active text-left rounded-2xl border border-neutral-300 bg-white p-4 shadow-sm" data-node="x">
+          <div class="text-2xl">⚙️</div>
+          <div class="mt-2 font-semibold">Test params</div>
+          <div class="text-sm text-neutral-500">Candidate scenario x</div>
+        </button>
+        <button class="pipeline-node text-left rounded-2xl border border-neutral-300 bg-white p-4 shadow-sm" data-node="outcome">
+          <div class="text-2xl">𝒢</div>
+          <div class="mt-2 font-semibold">Outcome model</div>
+          <div class="text-sm text-neutral-500">x → y</div>
+        </button>
+        <button class="pipeline-node text-left rounded-2xl border border-neutral-300 bg-white p-4 shadow-sm" data-node="y">
+          <div class="text-2xl">▶</div>
+          <div class="mt-2 font-semibold">Outcomes</div>
+          <div class="text-sm text-neutral-500">Fairness, cost, priority, resilience</div>
+        </button>
+        <button class="pipeline-node text-left rounded-2xl border border-neutral-300 bg-white p-4 shadow-sm" data-node="llm">
+          <div class="text-2xl">💬</div>
+          <div class="mt-2 font-semibold">Evaluator</div>
+          <div class="text-sm text-neutral-500">Pairwise judgement z</div>
+        </button>
+        <button class="pipeline-node text-left rounded-2xl border border-neutral-300 bg-white p-4 shadow-sm" data-node="pref">
+          <div class="text-2xl">≼</div>
+          <div class="mt-2 font-semibold">Preference model</div>
+          <div class="text-sm text-neutral-500">Learns stakeholder values</div>
+        </button>
+        <button class="pipeline-node text-left rounded-2xl border border-neutral-300 bg-white p-4 shadow-sm" data-node="aimo">
+          <div class="text-2xl">★</div>
+          <div class="mt-2 font-semibold">Acquisition</div>
+          <div class="text-sm text-neutral-500">Chooses next test</div>
+        </button>
+      </div>
+
+      <div id="pipeline-detail" class="mt-5 rounded-2xl bg-neutral-50 border border-neutral-200 p-6 shadow-sm">
+        <h3 class="text-xl font-semibold">Test parameters</h3>
+        <p class="mt-2 text-neutral-700">A candidate scenario x encodes a proposed test. In the OPF setting, x describes DER placement and reactive power settings. SEED-SET scores many such candidates and decides which ones are worth evaluating next.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="border-t border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">Key takeaways</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">What the paper shows</h2>
+        <p class="mt-4 text-neutral-700">The demo HTML emphasizes several result messages that belong on the front page. Here they are in a lighter format so visitors can absorb them quickly.</p>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <div class="metric-card rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Candidate quality</div>
+          <div class="mt-3 text-4xl font-extrabold tracking-tight">2×</div>
+          <p class="mt-2 text-neutral-700">Up to 2× more optimal test candidates found than baselines under the same evaluation budget.</p>
+        </div>
+        <div class="metric-card rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Coverage</div>
+          <div class="mt-3 text-4xl font-extrabold tracking-tight">1.25×</div>
+          <p class="mt-2 text-neutral-700">Better coverage of high-dimensional search spaces, helping the test suite reveal more diverse failure modes.</p>
+        </div>
+        <div class="metric-card rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Interpretability</div>
+          <div class="mt-3 text-4xl font-extrabold tracking-tight">Two-model</div>
+          <p class="mt-2 text-neutral-700">Separate models for outcomes and preferences make it clearer whether uncertainty comes from system behaviour or stakeholder values.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 grid lg:grid-cols-2 gap-6">
+        <div class="rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <h3 class="text-xl font-semibold">Different criteria collect different kinds of scenarios</h3>
+          <p class="mt-3 text-neutral-700">Instead of emphasizing the acquisition formula on the front page, this section can directly show the effect of changing evaluation criteria. Under different stakeholder criteria, the collected scenarios occupy different parts of the priority–cost trade-off space.</p>
+          <div class="mt-5 grid sm:grid-cols-2 gap-4">
+            <a href="criteria-1" class="group rounded-xl border border-neutral-200 bg-neutral-50 p-4 hover:bg-neutral-100">
+              <!--div class="text-sm font-semibold text-neutral-500">Figure link</div-->
+              <div class="mt-1 font-semibold text-neutral-900 group-hover:underline">criteria-1</div>
+              <p class="mt-2 text-sm text-neutral-700">Low Cost (most important), High Fairness, High Resilience, High Priority/p>
+            </a>
+            <a href="criteria-2" class="group rounded-xl border border-neutral-200 bg-neutral-50 p-4 hover:bg-neutral-100">
+              <!--div class="text-sm font-semibold text-neutral-500">Figure link</div-->
+              <div class="mt-1 font-semibold text-neutral-900 group-hover:underline">criteria-2</div>
+              <p class="mt-2 text-sm text-neutral-700">High Priority (most important), High Fairness, High Resilience, Low Cost (less important) </p>
+            </a>
+          </div>
+          <figure class="mt-5 overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50">
+            <img class="w-full" src="static/images/criteria-stakeholders.png" alt="Comparison figure showing that collected scenarios under different criteria lead to different observed priority and cost trade-offs" />
+            <figcaption class="p-4 text-sm text-neutral-600">Criteria-1 scenarios show lower average cost compared to Criteria-2. This also leads to lower average priority, because cost and priority are coupled, and Criteria-1 strongly favors low cost. Our approach succesfully generates scenarios that align with hidden complex ethical criteria, learnt from pairwise evaluation.</figcaption>
+          </figure>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-neutral-200 p-6 shadow-sm">
+          <h3 class="text-xl font-semibold">Different stakeholders produce different test suites</h3>
+          <p class="mt-3 text-neutral-700">Another strong demo idea is stakeholder-dependent testing. Click below to see how the emphasis changes depending on whose preferences are embedded.</p>
+
+          <div class="mt-5 grid sm:grid-cols-2 gap-3">
+            <button class="stake-card active rounded-2xl border border-neutral-300 bg-white p-4 text-left" data-stake="priority">
+              <div class="font-semibold">Priority advocate</div>
+              <div class="mt-1 text-sm text-neutral-600">Emphasizes underserved coverage and access.</div>
+            </button>
+            <button class="stake-card rounded-2xl border border-neutral-300 bg-white p-4 text-left" data-stake="regulator">
+              <div class="font-semibold">Community regulator</div>
+              <div class="mt-1 text-sm text-neutral-600">Emphasizes fairness across affected groups.</div>
+            </button>
+            <button class="stake-card rounded-2xl border border-neutral-300 bg-white p-4 text-left" data-stake="engineer">
+              <div class="font-semibold">Grid engineer</div>
+              <div class="mt-1 text-sm text-neutral-600">Emphasizes resilience and safe operation.</div>
+            </button>
+            <button class="stake-card rounded-2xl border border-neutral-300 bg-white p-4 text-left" data-stake="balanced">
+              <div class="font-semibold">Balanced PUC</div>
+              <div class="mt-1 text-sm text-neutral-600">Seeks a compromise across all objectives.</div>
+            </button>
+          </div>
+
+          <div id="stake-detail" class="mt-4 rounded-xl bg-neutral-50 border border-neutral-200 p-4 text-neutral-700">
+            SEED-SET will tend to surface scenarios where underserved buses are ignored or poorly covered, because these are the tests most informative for a stakeholder focused on priority and access.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources" class="border-t border-neutral-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">Resources</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Where to go next</h2>
+        <p class="mt-4 text-neutral-700">The index page should help people orient quickly, then branch into deeper resources depending on what they want.</p>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+        <a href="https://openreview.net/pdf?id=lfsjVdi72l" class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 shadow-sm hover:bg-neutral-100">
+          <div class="text-sm font-semibold text-neutral-500">Paper</div>
+          <h3 class="mt-2 text-xl font-semibold">Read the full paper</h3>
+          <p class="mt-2 text-neutral-700">Method details, experiments, and baselines.</p>
+        </a>
+        <a href="demo_lite.html" class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 shadow-sm hover:bg-neutral-100">
+          <div class="text-sm font-semibold text-neutral-500">Project blog post</div>
+          <h3 class="mt-2 text-xl font-semibold inline-flex items-center gap-2"><span aria-hidden="true">📝</span><span>Read the blog-style walkthrough</span></h3>
+          <p class="mt-2 text-neutral-700">Follow a more narrative explanation of the motivation, problem setup, and intuition behind the method.</p>
+        </a>
+        <a href="https://colab.research.google.com/drive/1eNi_Ogxze1mkHXmp94bY0QWhxA3H7bT2?usp=sharing" class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 shadow-sm hover:bg-neutral-100">
+          <div class="text-sm font-semibold text-neutral-500">Google Colab</div>
+          <h3 class="mt-2 text-xl font-semibold inline-flex items-center gap-2"><span aria-hidden="true">📓</span><span>Open the interactive Colab notebook</span></h3>
+          <p class="mt-2 text-neutral-700">Run the demo step by step in Google Colab and explore the pipeline outputs yourself.</p>
+        </a>
+        <a href="https://news.mit.edu/2026/evaluating-autonomous-systems-ethics-0402" class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 shadow-sm hover:bg-neutral-100">
+          <div class="text-sm font-semibold text-neutral-500">MIT News</div>
+          <h3 class="mt-2 text-xl font-semibold inline-flex items-center gap-2"><span aria-hidden="true">📰</span><span>Read the MIT News feature</span></h3>
+          <p class="mt-2 text-neutral-700">See a broader-audience summary of the motivation, impact, and larger context for the work.</p>
+        </a>
+      </div>
+
+      <div class="mt-8 rounded-2xl bg-neutral-900 text-neutral-100 p-6">
+        <h3 class="text-xl font-semibold">Suggested information hierarchy</h3>
+        <p class="mt-3 text-neutral-300">Index page = 5-minute summary. <span class="font-semibold text-white">📝 Blog post</span> = intuition and interactive narrative. <span class="font-semibold text-white">📓 Colab</span> = executable demo. Paper = formal method and experiments. <span class="font-semibold text-white">📰 MIT News</span> = broad-impact overview.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="abstract" class="border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-14">
       <h2 class="text-2xl md:text-3xl font-bold">Abstract</h2>
-      <p class="mt-4 text-neutral-700">As autonomous systems such as drones, become increasingly deployed in high-stakes, human-centric domains, it is critical to evaluate the ethical alignment since failure to do so imposes imminent danger to human lives, and long term bias in decision-making. Automated ethical benchmarking of these systems is understudied due to the lack of ubiquitous, well-defined metrics for evaluation, and stakeholder-specific subjectivity, which cannot be modeled analytically.  To address these challenges, we propose SEED-SET, a Bayesian experimental design framework that incorporates domain-specific objective evaluations, and subjective value judgments from stakeholders. SEED-SET models both evaluation types separately with hierarchical Gaussian Processes, and uses a novel acquisition strategy to propose interesting test candidates based on learnt qualitative preferences and objectives that align with the stakeholder preferences.
-        We validate our approach for ethical benchmarking of autonomous agents on two applications and find our method to perform the best. Our method provides an interpretable and efficient trade-off between exploration and exploitation, by generating up to $2\times$ optimal test candidates compared to baselines, with $1.25\times$ improvement in coverage of high dimensional search spaces. </p>
-      <!--ul class="mt-4 list-disc pl-6 text-neutral-700">
-        <li>Key takeaway 1.</li>
-        <li>Key takeaway 2.</li>
-        <li>Key takeaway 3.</li>
-      </ul-->
+      <p class="mt-4 text-neutral-700">As autonomous systems such as drones become increasingly deployed in high-stakes, human-centric domains, it is critical to evaluate ethical alignment since failure to do so can impose imminent danger to human lives and long-term bias in decision-making. Automated ethical benchmarking of these systems is understudied due to the lack of ubiquitous, well-defined metrics for evaluation, and stakeholder-specific subjectivity, which cannot be modeled analytically. To address these challenges, we propose SEED-SET, a Bayesian experimental design framework that incorporates domain-specific objective evaluations and subjective value judgments from stakeholders. SEED-SET models both evaluation types separately with hierarchical Gaussian Processes and uses a novel acquisition strategy to propose interesting test candidates based on learned qualitative preferences and objectives that align with stakeholder preferences. We validate our approach for ethical benchmarking of autonomous agents on two applications and find our method to perform the best. Our method provides an interpretable and efficient trade-off between exploration and exploitation, generating up to 2× optimal test candidates compared to baselines, with 1.25× improvement in coverage of high-dimensional search spaces.</p>
     </div>
   </section>
 
-  
-
-  <!-- Code & Data -->
-  <section id="code" class="border-t border-neutral-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <h2 class="text-2xl md:text-3xl font-bold">Code</h2>
-      <p class="mt-2 text-neutral-700">To be released soon!</p>
-      <div class="mt-4 grid md:grid-cols-2 gap-4">
-        <!--div class="bg-neutral-100 rounded-2xl p-4">
-          <h3 class="font-semibold">Quickstart</h3>
-          <pre class="mt-2 text-sm overflow-x-auto"><code>git clone https://github.com/MIT-REALM/contextual_failure.git
-cd contextual_failure
-        </div-->
-  </section>
-
-  <!-- BibTeX -->
   <section id="bibtex" class="border-t border-neutral-200 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-14">
       <h2 class="text-2xl md:text-3xl font-bold">BibTeX</h2>
-      <pre class="mt-4 bg-neutral-100 p-4 rounded-2xl overflow-x-auto text-sm"><code>@inproceedings{parasharseed,
-        title={SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing},
-        author={Parashar, Anjali and Li, Yingke and Yu, Eric Yang and Chen, Fei and Neidhoefer, James and Upadhyay, Devesh and Fan, Chuchu},
-        booktitle={The Fourteenth International Conference on Learning Representations}
-      }
-</code></pre>
+      <pre class="mt-4 bg-neutral-100 p-4 rounded-2xl overflow-x-auto text-sm border border-neutral-200"><code>@inproceedings{parasharseed,
+  title={SEED-SET: Scalable Evolving Experimental Design for System-level Ethical Testing},
+  author={Parashar, Anjali and Li, Yingke and Yu, Eric Yang and Chen, Fei and Neidhoefer, James and Upadhyay, Devesh and Fan, Chuchu},
+  booktitle={The Fourteenth International Conference on Learning Representations}
+}</code></pre>
     </div>
   </section>
 
-  <!-- Team -->
   <section id="team" class="border-t border-neutral-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
       <h2 class="text-2xl md:text-3xl font-bold">Authors & Affiliations</h2>
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl p-4 shadow">
+        <div class="bg-white rounded-2xl p-4 shadow border border-neutral-200">
           <div class="font-semibold">Anjali Parashar</div>
           <div class="text-sm text-neutral-600">MIT REALM Lab</div>
-          <div class="mt-2 text-sm"><a class="underline" href="https://aeroastro.mit.edu/realm/team/anjali-parashar/">Homepage</a> • <a class="underline" href="https://scholar.google.com/citations?user=XMr6ploAAAAJ&hl=en&oi=ao" href="#">Scholar</a> • <a class="underline" href="anjalip@mit.edu">Email</a></div>
+          <div class="mt-2 text-sm"><a class="underline" href="https://aeroastro.mit.edu/realm/team/anjali-parashar/">Homepage</a> • <a class="underline" href="https://scholar.google.com/citations?user=XMr6ploAAAAJ&hl=en&oi=ao">Scholar</a> • <a class="underline" href="mailto:anjalip@mit.edu">Email</a></div>
         </div>
-        <!-- Duplicate blocks for co-authors -->
       </div>
     </div>
   </section>
 
-  
-
-  <!-- Footer -->
-  <footer class="border-t border-neutral-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-sm text-neutral-600 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+  <footer class="border-t border-neutral-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-sm text-neutral-600 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
       <div>© ICLR 2026 Parashar et al. Please cite if you use this work.</div>
-      <div class="flex gap-4">
-        <a class="underline" href="https://openreview.net/pdf/0c4bbc4ecee323522e632879cc6fa741268a8c13.pdf">Paper</a>
+      <div class="flex flex-wrap gap-4">
+        <a class="underline" href="https://openreview.net/pdf?id=lfsjVdi72l">Paper</a>
         <a class="underline" href="https://github.com/MIT-REALM/contextual_failure">Code</a>
+        <a class="underline" href="demo_lite.html">Blog</a>
+        <a class="underline" href="https://colab.research.google.com/drive/1eNi_Ogxze1mkHXmp94bY0QWhxA3H7bT2?usp=sharing">Colab</a>
+        <a class="underline" href="https://news.mit.edu/2026/evaluating-autonomous-systems-ethics-0402">MIT News</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    const pipelineContent = {
+      x: {
+        title: 'Test parameters',
+        text: 'A candidate scenario x encodes the next test to run. In the OPF case, this includes DER placement and reactive power settings. SEED-SET evaluates many possible x values, then decides which ones are worth spending budget on.'
+      },
+      outcome: {
+        title: 'Outcome model',
+        text: 'A probabilistic model maps x to objective outcomes y. This captures uncertainty over fairness, cost, priority, and resilience, and lets the method reason about where the system is still poorly understood.'
+      },
+      y: {
+        title: 'Outcomes',
+        text: 'Each evaluated scenario produces a multi-objective outcome vector. The point is not just to know whether a system succeeds or fails, but how it behaves across several competing objectives.'
+      },
+      llm: {
+        title: 'Evaluator',
+        text: 'SEED-SET can use pairwise judgments to model stakeholder preferences. In the demo framing, an LLM acts as a scalable proxy evaluator that compares outcomes based on stakeholder criteria.'
+      },
+      pref: {
+        title: 'Preference model',
+        text: 'A second probabilistic model learns which outcome trade-offs a stakeholder prefers. Separating this from the outcome model makes the source of uncertainty much easier to interpret.'
+      },
+      aimo: {
+        title: 'Acquisition strategy',
+        text: 'The next test is chosen to be informative about both system behaviour and stakeholder values. This is what makes SEED-SET sample-efficient in large, expensive scenario spaces.'
+      }
+    };
+
+    const nodes = document.querySelectorAll('.pipeline-node');
+    const pipelineDetail = document.getElementById('pipeline-detail');
+    nodes.forEach(node => {
+      node.addEventListener('click', () => {
+        nodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        const key = node.dataset.node;
+        pipelineDetail.innerHTML = `\n          <h3 class="text-xl font-semibold">${pipelineContent[key].title}</h3>\n          <p class="mt-2 text-neutral-700">${pipelineContent[key].text}</p>\n        `;
+      });
+    });
+
+    const stakeholderContent = {
+      priority: 'SEED-SET will tend to surface scenarios where underserved buses are ignored or poorly covered, because these are the tests most informative for a stakeholder focused on priority and access.',
+      regulator: 'SEED-SET will favor scenarios that expose uneven performance across groups or regions, since fairness-sensitive trade-offs are the most important source of information for this stakeholder.',
+      engineer: 'SEED-SET will spend more budget on edge cases involving voltage drops, recovery, or fragile operating regimes, because resilience and safe operation dominate the preference model.',
+      balanced: 'SEED-SET will search for scenarios that clarify the trade-off surface itself, rather than heavily optimizing a single objective, because the stakeholder wants compromise across objectives.'
+    };
+
+    const stakeCards = document.querySelectorAll('.stake-card');
+    const stakeDetail = document.getElementById('stake-detail');
+    stakeCards.forEach(card => {
+      card.addEventListener('click', () => {
+        stakeCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        stakeDetail.textContent = stakeholderContent[card.dataset.stake];
+      });
+    });
+  </script>
 </body>
 </html>
